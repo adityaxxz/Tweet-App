@@ -1,8 +1,14 @@
 #!/bin/bash
 
+# Make this script executable
+chmod +x build_files.sh
+
 # Build the project
 echo "Building the project..."
 pip install -r requirements.txt
+
+# Create staticfiles directory if it doesn't exist
+mkdir -p staticfiles
 
 # Collect static files
 echo "Collecting static files..."

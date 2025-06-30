@@ -20,7 +20,7 @@ django-admin startproject tweet-app
 
 
 python .\manage.py makemigrations tweet
- python .\manage.py migrate
+python .\manage.py migrate
 
 ---
 

@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "framework": null,
   "builds": [
     {
       "src": "tweetapp/wsgi.py",
@@ -24,11 +25,15 @@
       "dest": "/media/$1"
     },
     {
+      "handle": "filesystem"
+    },
+    {
       "src": "/(.*)",
-      "dest": "tweetapp/wsgi.py"
+      "dest": "/tweetapp/wsgi.py"
     }
   ],
   "env": {
-    "DJANGO_SETTINGS_MODULE": "tweetapp.settings"
+    "DJANGO_SETTINGS_MODULE": "tweetapp.settings",
+    "PYTHONPATH": "."
   }
 } 
