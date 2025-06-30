@@ -1,0 +1,406 @@
+/* Custom CSS for Tweet App */
+
+/* Root variables for consistent theming */
+:root {
+  --primary-color: #1DA1F2;
+  --secondary-color: #14171A;
+  --accent-color: #657786;
+  --light-color: #AAB8C2;
+  --extra-light-color: #E1E8ED;
+  --white-color: #FFFFFF;
+  --success-color: #17bf63;
+  --danger-color: #e0245e;
+  --navbar-bg: rgba(20, 23, 26, 0.95);
+  --card-bg: #192734;
+}
+
+/* Body styles */
+body {
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+/* Enhanced Navbar styling */
+.navbar {
+  background-color: var(--navbar-bg) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: var(--primary-color) !important;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(29, 161, 242, 0.5);
+}
+
+.navbar .nav-link {
+  color: var(--light-color);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  margin: 0 0.25rem;
+}
+
+.navbar .nav-link:hover {
+  color: var(--white-color);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.navbar .nav-link.active {
+  color: var(--primary-color);
+  background-color: rgba(29, 161, 242, 0.1);
+}
+
+.navbar .dropdown-menu {
+  background-color: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 0;
+  border-radius: 10px;
+  margin-top: 0.5rem;
+}
+
+.navbar .dropdown-item {
+  color: var(--light-color);
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.navbar .dropdown-item:hover {
+  background-color: rgba(29, 161, 242, 0.1);
+  color: var(--primary-color);
+}
+
+.navbar .dropdown-item.text-danger:hover {
+  background-color: rgba(224, 36, 94, 0.1);
+}
+
+.navbar .dropdown-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-menu-btn {
+  border-radius: 30px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.user-menu-btn:hover {
+  background-color: rgba(29, 161, 242, 0.1);
+}
+
+.search-form {
+  max-width: 300px;
+}
+
+.search-form .input-group {
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.search-form .form-control {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.search-form .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+@media (max-width: 992px) {
+  .navbar .nav-link {
+    margin: 0.25rem 0;
+  }
+  
+  .search-form {
+    max-width: 100%;
+    margin: 0.5rem 0;
+  }
+  
+  .nav-user-section {
+    margin-top: 0.5rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Button styling */
+.btn {
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #0d8ecf;
+  border-color: #0d8ecf;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(29, 161, 242, 0.3);
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  border-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+  background-color: #c0204d;
+  border-color: #c0204d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(224, 36, 94, 0.3);
+}
+
+.btn-outline-success {
+  color: var(--success-color);
+  border-color: var(--success-color);
+}
+
+.btn-outline-success:hover {
+  background-color: var(--success-color);
+  color: var(--white-color);
+  transform: translateY(-2px);
+}
+
+/* Form styling */
+.form-control {
+  border-radius: 30px;
+  padding: 10px 15px;
+  border: 1px solid var(--accent-color);
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(29, 161, 242, 0.25);
+  border-color: var(--primary-color);
+  background-color: rgba(20, 23, 26, 0.8);
+}
+
+/* Card styling */
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: var(--card-bg);
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  max-height: 250px;
+  object-fit: cover;
+}
+
+.card-title {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.card-text {
+  color: var(--white-color);
+}
+
+/* Tweet list container */
+.tweet-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+/* Animation for new tweets */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Animation for hovering over tweets */
+.card {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Page title styling */
+h1, h2 {
+  color: white;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+h1:after, h2:after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 3px;
+  background-color: var(--primary-color);
+  bottom: -10px;
+  left: 25%;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+h1:hover:after, h2:hover:after {
+  transform: scaleX(1);
+}
+
+/* Search form styling */
+.search-form {
+  margin-bottom: 0;
+}
+
+/* Profile image styling */
+.profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tweet timestamp */
+.tweet-time {
+  color: var(--accent-color);
+  font-size: 0.8rem;
+}
+
+/* Footer styling */
+.footer {
+  margin-top: 50px;
+  padding: 20px 0;
+  text-align: center;
+  color: var(--accent-color);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card {
+    width: 100% !important;
+  }
+  
+  .tweet-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Loading animation */
+.loading {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.loading:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 8px;
+  box-sizing: border-box;
+  border: 32px solid var(--primary-color);
+  border-color: var(--primary-color) transparent var(--primary-color) transparent;
+  animation: loading 1.2s infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(180deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Toast notification */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1050;
+}
+
+.toast {
+  background-color: rgba(20, 23, 26, 0.9);
+  color: var(--white-color);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-left: 4px solid var(--primary-color);
+  animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0d8ecf;
+} 

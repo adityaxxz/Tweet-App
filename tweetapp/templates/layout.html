@@ -1,0 +1,96 @@
+{% load static %}  <!-- load static files -->
+
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>{% block title %}
+        TweetApp
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <!-- Enhanced Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+          <!-- Logo and brand -->
+          <a class="navbar-brand" href="{% url 'tweet_list' %}">
+            <i class="fab fa-twitter text-primary me-2"></i>TweetApp
+          </a>
+          
+          <!-- Mobile toggle button -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <!-- Navbar content -->
+          <div class="collapse navbar-collapse" id="navbarContent">
+            <!-- Main navigation - Removed as requested -->
+            <div class="me-auto"></div>
+            
+            <!-- Search form -->
+            <form class="d-flex search-form me-3" role="search" action="{% url 'tweet_search' %}" method="get">
+              <div class="input-group">
+                <input class="form-control" type="search" name="query" placeholder="Search tweets..." aria-label="Search"/>
+                <button class="btn btn-primary" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </form>
+            
+            <!-- User actions -->
+            <div class="d-flex align-items-center nav-user-section">
+              {% if user.is_authenticated %}
+                <!-- User dropdown menu -->
+                <div class="dropdown me-2">
+                  <button class="btn btn-outline-primary user-menu-btn" type="button" id="userMenuButton" aria-expanded="false">
+                    <i class="fas fa-user me-2"></i>{{ user.username }}
+                  </button>
+                  <!-- <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenuButton">
+                    <li><a class="dropdown-item" href="{% url 'tweet_list' %}"><i class="fas fa-home me-2"></i>Home</a></li>
+                    <li><a class="dropdown-item" href="{% url 'tweet_create' %}"><i class="fas fa-plus-circle me-2"></i>New Tweet</a></li>
+                    <li><a class="dropdown-item" href="{% url 'tweet_search' %}"><i class="fas fa-search me-2"></i>Search</a></li>
+                  </ul> -->
+                </div>
+                
+                <!-- Visible logout button as a form with POST method -->
+                <form action="{% url 'logout' %}" method="post" class="m-0">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                  </button>
+                </form>
+              {% else %}
+                <a href="{% url 'login' %}" class="btn btn-primary me-2">
+                  <i class="fas fa-sign-in-alt me-2"></i>Login
+                </a>
+                <a href="{% url 'register' %}" class="btn btn-outline-primary">
+                  <i class="fas fa-user-plus me-2"></i>Register
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+    <div class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer class="footer mt-5">
+      <div class="container text-center">
+        <p>© 2025 TweetApp - A Twitter-like Application</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <!-- Custom JavaScript -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

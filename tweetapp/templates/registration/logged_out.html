@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+TweetApp - Logged Out
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card fade-in">
+            <div class="card-body text-center">
+                <div class="mb-4">
+                    <i class="fas fa-check-circle text-success fa-4x"></i>
+                </div>
+                <h1 class="mb-3">Logged Out</h1>
+                <p class="lead mb-4">You have been successfully logged out.</p>
+                <a href="{% url 'login' %}" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt me-2"></i>Login Again
+                </a>
+                <a href="{% url 'tweet_list' %}" class="btn btn-outline-primary ms-2">
+                    <i class="fas fa-home me-2"></i>Go to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

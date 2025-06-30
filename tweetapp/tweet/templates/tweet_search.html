@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+
+{%block title%}
+TweetApp - Search Results
+{%endblock%}
+
+{%block content%}
+<div class="text-center mb-5">
+    <h1 class="display-4 mb-4">
+        <i class="text-primary me-2"></i>Search Tweets
+    </h1>
+    
+    <div class="mb-4">
+        <div class="card search-form fade-in" style="max-width: 500px; margin: 0 auto;">
+            <div class="card-body">
+                <form method="get" class="d-flex">
+                    <input class="form-control me-2" type="search" name="query" placeholder="Search tweets..." value="{{ request.GET.query|default:'' }}">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search me-1"></i>Search
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if search_performed %}
+    <div class="mb-4 mt-5">
+        {% if request.GET.query %}
+            <h2 class="mb-3">
+                <i class="fas fa-search-plus me-2"></i>Results for "{{ request.GET.query }}"
+            </h2>
+        {% endif %}
+        
+        {% if search_results %}
+            <div class="tweet-container">
+                {% for tweet in search_results %}
+                <div class="card fade-in">
+                    {% if tweet.photo and tweet.photo.url %}
+                    <img src="{{ tweet.photo.url }}" class="card-img-top" alt="Tweet image">
+                    {% endif %}
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="profile-img bg-primary d-flex align-items-center justify-content-center">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                            <div class="ms-2">
+                                <h5 class="card-title mb-0">{{ tweet.user.username }}</h5>
+                                <p class="tweet-time mb-0">
+                                    <i class="far fa-clock me-1"></i>{{ tweet.created_at|date:"M d, Y" }} at {{ tweet.created_at|time:"H:i" }}
+                                </p>
+                            </div>
+                        </div>
+                        <p class="card-text mt-3">{{ tweet.text }}</p>
+                        
+                        {% if user.is_authenticated and user == tweet.user %}
+                        <div class="d-flex justify-content-end mt-3">
+                            <a href="/tweet/{{ tweet.id }}/edit/" class="btn btn-sm btn-primary me-2">
+                                <i class="fas fa-edit me-1"></i>Edit
+                            </a>
+                            <a href="/tweet/{{ tweet.id }}/delete/" class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash me-1"></i>Delete
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center py-5 fade-in">
+                <div class="mb-4">
+                    <i class="fas fa-search-minus fa-5x text-muted"></i>
+                </div>
+                <h3 class="text-muted">No tweets found matching "{{ request.GET.query }}"</h3>
+                <p class="lead text-muted">Try a different search term or browse all tweets.</p>
+            </div>
+        {% endif %}
+    </div>
+{% endif %}
+
+<div class="text-center mt-4">
+    <a href="{% url 'tweet_list' %}" class="btn btn-secondary">
+        <i class="fas fa-arrow-left me-2"></i>Back to All Tweets
+    </a>
+</div>
+{%endblock%}
+
+
