@@ -1,3 +1,5 @@
 .vercel
 .env
-
+.env.example
+build_files.sh
+vercel.json

@@ -1,5 +1,3 @@
-// Main JavaScript for Tweet App
-
 document.addEventListener('DOMContentLoaded', function() {
     // Add fade-in animation to all cards
     const cards = document.querySelectorAll('.card');

@@ -1,95 +1,139 @@
-# TweetApp - Django Social Media App
+# TweetApp
 
-A simple Twitter-like application built with Django.
+A simple Twitter-like social media application built with Django.
 
-## Deployment to Vercel
+![TweetApp Screenshot]()
+
+## Features
+
+- User authentication (register, login, logout)
+- Create, read, update, and delete tweets
+- Image uploads with tweets
+- Search functionality for tweets
+- Responsive design
+
+## Tech Stack
+
+- Django 5.2.3
+- Python 3.9+
+- SQLite (development) / PostgreSQL (production)
+- Pillow for image processing
+- WhiteNoise for static files
+
+## Installation
 
 ### Prerequisites
 
-- A Vercel account
-- Git installed on your machine
-- Python 3.9+ installed
+- Python 3.9+
+- Git
 
-### Local Development Setup
+### Setup
 
 1. Clone the repository
-   ```
-   git clone <your-repository-url>
+   ```bash
+   git clone https://github.com/yourusername/tweetapp.git
    cd tweetapp
    ```
 
 2. Create a virtual environment
-   ```
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```bash
+   python -m venv .venv
+   # On Windows
+   .\.venv\Scripts\activate
+   # On macOS/Linux
+   source .venv/bin/activate
    ```
 
 3. Install dependencies
-   ```
+   ```bash
    pip install -r requirements.txt
    ```
 
-4. Create a `.env` file based on `.env.example`
-   ```
-   cp .env.example .env
-   ```
-   Then edit the `.env` file with your settings.
-
-5. Run migrations
-   ```
+4. Run migrations
+   ```bash
    python manage.py migrate
    ```
 
-6. Run the development server
+5. Create a superuser (admin)
+   ```bash
+   python manage.py createsuperuser
    ```
+
+6. Run the development server
+   ```bash
    python manage.py runserver
+   ```
+
+7. Access the application at `http://127.0.0.1:8000`
+
+## Environment Variables
+
+Create a `.env` file in the project root with the following variables:
+
+```
+SECRET_KEY=your_secret_key
+DEBUG=True
+DATABASE_URL=sqlite:///db.sqlite3
+```
+
+For production, update these values appropriately.
+
+## Deployment
+
+### Deploying to a Server
+
+1. Set up a production-ready database (PostgreSQL recommended)
+2. Configure environment variables for production
+3. Collect static files:
+   ```bash
+   python manage.py collectstatic
+   ```
+4. Use Gunicorn as the WSGI server:
+   ```bash
+   gunicorn tweetapp.wsgi:application
    ```
 
 ### Deploying to Vercel
 
 1. Install Vercel CLI
-   ```
+   ```bash
    npm install -g vercel
    ```
 
 2. Login to Vercel
-   ```
+   ```bash
    vercel login
    ```
 
 3. Deploy the app
-   ```
+   ```bash
    vercel
    ```
 
 4. For production deployment
-   ```
+   ```bash
    vercel --prod
    ```
 
-### Environment Variables
-
 Set these environment variables in your Vercel project settings:
-
 - `SECRET_KEY`: Your Django secret key
 - `DEBUG`: Set to 'False' for production
 - `DATABASE_URL`: Your PostgreSQL connection string
-- `VERCEL_URL`: Your app's Vercel URL (automatically set by Vercel)
 
-### Database Setup
+## Contributing
 
-For production, you'll need to set up a PostgreSQL database. You can use:
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature-name`
+5. Open a pull request
 
-- Vercel Postgres
-- Supabase
-- Neon
-- Any other PostgreSQL provider
+## License
 
-Update the `DATABASE_URL` environment variable with your database connection string.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Features
+## Acknowledgements
 
-- User authentication (login, register, logout)
-- Create, read, update, and delete tweets
-- Upload images with tweets
-- Search functionality for tweets 
+- Django documentation
+- Bootstrap for UI components
+- Contributors and maintainers 
