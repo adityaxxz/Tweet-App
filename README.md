@@ -2,7 +2,8 @@
 
 A simple Twitter-like social media application built with Django.
 
-![TweetApp Screenshot]()
+<!-- ![TweetApp Screenshot](/image.png) -->
+<img src="image.png" alt="TweetApp Screenshot" align="center" width="80%" height="80%">
 
 ## Features
 
@@ -120,13 +121,6 @@ Set these environment variables in your Vercel project settings:
 - `DEBUG`: Set to 'False' for production
 - `DATABASE_URL`: Your PostgreSQL connection string
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin feature-name`
-5. Open a pull request
 
 ## License
 
@@ -134,6 +128,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgements
 
-- Django documentation
-- Bootstrap for UI components
-- Contributors and maintainers 
+- Django documentation (https://docs.djangoproject.com/)
+- Bootstrap for UI components (https://getbootstrap.com/)
+- Contributors and maintainers (https://github.com/adityaxxz/tweet-app/graphs/contributors)
