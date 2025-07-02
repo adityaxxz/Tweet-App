@@ -11,10 +11,3 @@ urlpatterns = [
     path('search/', views.tweet_search, name='tweet_search'),
     path('logout/', views.custom_logout, name='logout'),
 ]
-
-
-
-
-# what does this line do ? 
-# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
-# serve user-uploaded media files (such as images, docus, etc.) during development (not in production).

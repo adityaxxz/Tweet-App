@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "tweet",
+    "tweet",    #this is the app that we created, first step is to add it to the INSTALLED_APPS
+    "tailwind",
 ]
 
 MIDDLEWARE = [

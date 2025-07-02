@@ -1,31 +1,41 @@
-# django notes
+## django structure
 
-## create a new project
-django-admin startproject tweet-app
+> User -> request -> urls.py -> views.py -> templates -> response
 
-## create a new app
-python .\manage.py startapp tweet
+or, a verbose way to put it:
 
-## activate virtual environment
-.\.venv\Scripts\activate
+![django structure](/django-structure.png)
 
-## run server 
-python .\manage.py runserver
+## django cmds
 
-## create admin aka superuser
-python .\manage.py createsuperuser
+### - create a new project
+```django-admin startproject tweet-app```
 
-django-admin startproject tweet-app
+### - create a new app
+```python .\manage.py startapp tweet```
 
+### - activate virtual environment
+```.\.venv\Scripts\activate```
 
+### - run server 
+```python .\manage.py runserver```
 
+### - create admin aka superuser
+```python .\manage.py createsuperuser```
+
+### - make migrations
+```python .\manage.py makemigrations tweet```
+
+### - migrate
+```
 python .\manage.py makemigrations tweet
 python .\manage.py migrate
+```
 
 ---
 
 
-# The search functionality is just a form — the data will come from inside the form. Based on that data, Django's ORM will be used to perform a search, specifically on the basis of tweet text. Then, a new view needs to be created, and also a new template for displaying the search results.
+- The search functionality is just a form — the data will come from inside the form. Based on that data, Django's ORM will be used to perform a search, specifically on the basis of tweet text. Then, a new view needs to be created, and also a new template for displaying the search results.
 
 
 
