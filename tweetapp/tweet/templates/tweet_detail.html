@@ -1,0 +1,111 @@
+{%extends "layout.html"%}
+
+{%block title%}
+TweetApp - Tweet Details
+{%endblock%}
+
+{%block content%}
+
+<div class="container">
+    <!-- Tweet Card -->
+    <div class="card mb-4 fade-in">
+        {% if tweet.photo and tweet.photo.url %}
+        <img src="{{ tweet.photo.url }}" class="card-img-top" alt="Tweet image">
+        {% endif %}
+        <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+                <div class="profile-img bg-primary d-flex align-items-center justify-content-center">
+                    <i class="fas fa-user text-white"></i>
+                </div>
+                <div class="ms-2">
+                    <h5 class="card-title mb-0">{{ tweet.user.username }}</h5>
+                    <p class="tweet-time mb-0">
+                        <i class="far fa-clock me-1"></i>{{ tweet.created_at|date:"M d, Y" }} at {{ tweet.created_at|time:"H:i" }}
+                    </p>
+                </div>
+            </div>
+            <p class="card-text mt-3">{{ tweet.text }}</p>
+            
+            {% if user.is_authenticated and user == tweet.user %}
+            <div class="d-flex justify-content-end mt-3">
+                <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-sm btn-primary me-2">
+                    <i class="fas fa-edit me-1"></i>Edit
+                </a>
+                <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-sm btn-danger">
+                    <i class="fas fa-trash me-1"></i>Delete
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="card mb-4">
+        <div class="card-header bg-light text-dark">
+            <h5 class="mb-0">
+                <i class="fas fa-comments me-2"></i>Comments ({{ comments|length }})
+            </h5>
+        </div>
+        <div class="card-body">
+            {% if user.is_authenticated %}
+            <!-- Comment Form -->
+            <div class="mb-4">
+                <form method="post" class="comment-form">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        {{ comment_form.text.errors }}
+                        {{ comment_form.text }}
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane me-1"></i>Post Comment
+                        </button>
+                    </div>
+                </form>
+            </div>
+            {% else %}
+            <div class="alert alert-info mb-4">
+                <p class="mb-0">
+                    <i class="fas fa-info-circle me-2"></i>
+                    <a href="{% url 'login' %}">Login</a> or <a href="{% url 'register' %}">register</a> to post a comment.
+                </p>
+            </div>
+            {% endif %}
+
+            <!-- Comments List -->
+            {% if comments %}
+                <div class="comments-container">
+                    {% for comment in comments %}
+                    <div class="comment-card mb-3">
+                        <div class="d-flex">
+                            <div class="profile-img bg-primary d-flex align-items-center justify-content-center">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                            <div class="ms-2 flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h6 class="mb-0">{{ comment.user.username }}</h6>
+                                    <small class="text-muted">{{ comment.created_at|date:"M d, Y" }} at {{ comment.created_at|time:"H:i" }}</small>
+                                </div>
+                                <p class="mb-0 mt-1">{{ comment.text }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="text-center py-4">
+                    <i class="far fa-comment-dots fa-3x text-muted mb-3"></i>
+                    <p class="text-muted">No comments yet. Be the first to comment!</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'tweet_list' %}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left me-2"></i>Back to All Tweets
+        </a>
+    </div>
+</div>
+
+{%endblock%} 

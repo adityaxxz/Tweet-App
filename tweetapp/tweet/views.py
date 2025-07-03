@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Tweet
-from .forms import TweetForm, UserRegistrationForm, SearchForm
+from .forms import TweetForm, UserRegistrationForm, SearchForm, CommentForm
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
@@ -25,7 +25,7 @@ def tweet_create(request):
             tweet = form.save(commit=False)
             tweet.user = request.user
             tweet.save()
-            return redirect('tweet_list')
+            return redirect('tweet_list') 
     else:
         form=TweetForm()
     
@@ -102,3 +102,27 @@ def custom_logout(request):
     
     # Redirect to the tweet list page
     return redirect('tweet_list')
+
+
+def tweet_detail(request, tweet_id):
+    tweet = get_object_or_404(Tweet, pk=tweet_id)
+    comments = tweet.get_comments()
+    comment_form = None
+
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            comment_form = CommentForm(request.POST)
+            if comment_form.is_valid():
+                comment = comment_form.save(commit=False)
+                comment.tweet = tweet
+                comment.user = request.user
+                comment.save()
+                return redirect('tweet_detail', tweet_id=tweet_id)
+        else:
+            comment_form = CommentForm()
+
+    return render(request, 'tweet_detail.html', {
+        'tweet': tweet,
+        'comments': comments,
+        'comment_form': comment_form
+    })

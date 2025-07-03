@@ -403,4 +403,22 @@ h1:hover:after, h2:hover:after {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #0d8ecf;
+}
+
+/* Comment styling */
+.profile-img-sm {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.comment-card {
+    padding: 12px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.comments-container {
+    max-height: 500px;
+    overflow-y: auto;
 } 

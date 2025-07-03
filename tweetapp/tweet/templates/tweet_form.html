@@ -20,7 +20,7 @@ TweetApp - {% if form.instance.pk %}Edit Tweet{% else %}Create Tweet{% endif %}
             </div>
             <div class="card-body">
                 <form method="post" enctype="multipart/form-data" class="form">
-                    {% csrf_token %}
+                    {% csrf_token %} 
                     
                     <div class="mb-3">
                         <label for="{{ form.text.id_for_label }}" class="form-label">Tweet Text</label>
