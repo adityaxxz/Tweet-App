@@ -41,7 +41,7 @@ TweetApp - Tweet Details
 
     <!-- Comments Section -->
     <div class="card mb-4">
-        <div class="card-header bg-light">
+        <div class="card-header bg-light text-dark">
             <h5 class="mb-0">
                 <i class="fas fa-comments me-2"></i>Comments ({{ comments|length }})
             </h5>
@@ -76,7 +76,7 @@ TweetApp - Tweet Details
             {% if comments %}
                 <div class="comments-container">
                     {% for comment in comments %}
-                    <div class="comment-card mb-3">
+                    <div class="comment-card mb-3 ">
                         <div class="d-flex">
                             <div class="profile-img bg-primary d-flex align-items-center justify-content-center">
                                 <i class="fas fa-user text-white"></i>
