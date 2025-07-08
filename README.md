@@ -3,7 +3,7 @@
 A simple Twitter-like social media application built with Django.
 
 <!-- ![TweetApp Screenshot](/image.png) -->
-<img src="image.png" alt="TweetApp Screenshot" align="center" width="100%" height="100%">
+<img src="image.png" alt="TweetApp Screenshot" align="center" width="1000%" height="1000%">
 
 ## Features
 
