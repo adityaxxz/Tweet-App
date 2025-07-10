@@ -26,7 +26,8 @@ SECRET_KEY = "django-insecure-1uaa5@%j+jrk454%r5=nn2vrg-0)^91%u@s2h$h=r6v4cv2tk5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.0.101', '.trycloudflare.com'] #for cloudflare tunnel
+
 
 
 # Application definition
@@ -39,7 +40,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "tweet",    #this is the app that we created, first step is to add it to the INSTALLED_APPS
-    "tailwind",
 ]
 
 MIDDLEWARE = [

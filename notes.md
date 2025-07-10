@@ -40,4 +40,3 @@ python .\manage.py migrate
 
 - the comments functionality is working, created a new model for the comments and a comment form and then added it to views. added the url for the comments. then a new template for the comments using django forms [tweet_detail.html](tweetapp/tweet/templates/tweet_detail.html)
 registered this comment model in the admin so that admin can view all the comments.
-
