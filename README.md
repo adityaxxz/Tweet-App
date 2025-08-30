@@ -24,30 +24,31 @@ A simple Twitter-like social media application built with Django.
 ## Installation
 
 ### Prerequisites
-
 - Python 3.9+
 - Git
 
+> I've used uv, which is rust-based & 100x faster than pip
+ 
 ### Setup
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/tweetapp.git
+   git clone https://github.com/adityaxxz/tweet-app.git
    cd tweetapp
    ```
 
 2. Create a virtual environment
    ```bash
-   python -m venv .venv
+   uv venv
    # On Windows
-   .\.venv\Scripts\activate
+   .venv\Scripts\activate
    # On macOS/Linux
    source .venv/bin/activate
    ```
 
 3. Install dependencies
    ```bash
-   pip install -r requirements.txt
+   uv pip install -r requirements.txt
    ```
 
 4. Run migrations
@@ -131,3 +132,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Django documentation (https://docs.djangoproject.com/)
 - Bootstrap for UI components (https://getbootstrap.com/)
 - Contributors and maintainers (https://github.com/adityaxxz/tweet-app/graphs/contributors)
+
